@@ -1,0 +1,22 @@
+{
+  "name": "calck",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+
+  "scripts": {
+    "test": "mocha",
+    "start": "node index.js",
+    "lint": "eslint .",
+    "dev": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "chai": "^5.1.1",
+    "eslint": "^9.6.0",
+    "mocha": "^10.6.0",
+    "nodemon": "^3.1.4"
+  }
+}
