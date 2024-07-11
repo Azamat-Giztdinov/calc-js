@@ -1,8 +1,6 @@
-export default class Division {
-    constructor() {
-        this.precedence = 2;
-    }
+const Operation = require('./operation');
 
+class Division extends Operation {
     execute(a, b) {
         if (b === 0) {
             throw new Error('Division by zero');
@@ -10,3 +8,5 @@ export default class Division {
         return a / b;
     }
 }
+
+module.exports = Division;

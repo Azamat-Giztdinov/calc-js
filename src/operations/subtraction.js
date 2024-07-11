@@ -1,9 +1,9 @@
-export default class Subtraction {
-    constructor() {
-        this.precedence = 1;
-    }
+const Operation = require('./operation');
 
+class Subtraction extends Operation {
     execute(a, b) {
         return a - b;
     }
 }
+
+module.exports = Subtraction;

@@ -1,22 +1,33 @@
-import Calculator from './src/calculator.js';
-import Parser from './src/parser.js';
-import Evaluator from './src/evaluator.js';
-import readline from 'readline';
+const readline = require('readline');
+const Calculator = require('./src/calculator');
+const Addition = require('./src/operations/addition');
+const Subtraction = require('./src/operations/subtraction');
+const Multiplication = require('./src/operations/multiplication');
+const Division = require('./src/operations/division');
+
+const calculator = new Calculator();
+calculator.addOperation('+', new Addition());
+calculator.addOperation('-', new Subtraction());
+calculator.addOperation('*', new Multiplication());
+calculator.addOperation('/', new Division());
 
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
 
-const calculator = new Calculator(new Parser(), new Evaluator());
+rl.setPrompt('Enter an expression: ');
+rl.prompt();
 
-rl.question('Enter an expression: ', (expression) => {
+rl.on('line', (line) => {
     try {
-        const result = calculator.calculate(expression);
+        const result = calculator.evaluate(line.trim());
         console.log(`Result: ${result}`);
     } catch (error) {
         console.error(`Error: ${error.message}`);
-    } finally {
-        rl.close();
     }
+    rl.prompt();
+}).on('close', () => {
+    console.log('Calculator closed.');
+    process.exit(0);
 });
